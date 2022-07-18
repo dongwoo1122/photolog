@@ -2,7 +2,7 @@
 
 # README
 
-## users テーブル
+## users テーブル (ユーザー管理機能)
 | Column               | Type    | Options                   |
 | -------------------- | ------- | ------------------------- |
 | nickname             | string  | null: false               |
@@ -14,7 +14,7 @@
 - has_many :challenge
 - has_many :
 
-## challenges テーブル
+## challenges テーブル　（目標管理機能）
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | goal                  | string     | null: false                    |
@@ -25,39 +25,27 @@
 | user                  | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :order
+- has_one :log
 - belongs_to :user
  
-## logs テーブル
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| date             | date       | null: false                    |
-| memo             | text       | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| user             | references | null: false, foreign_key: true |
-| challenges       | references | null: false, foreign_key: true |
+## logs テーブル　（記録管理機能）
+|Column|Type|Options|
+| -------------- | ----------- | ------------------------------ |
+| title          | string      | null: false                    |
+| content        | text        | null: false                    |
+| time           | datetime    | null: false                    |
+| user           | references  | null: false, foreign_key: true |
+| challenge      | references  | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :user
-- belongs_to :item
-- has_one :delivery
+- belongs_to :challenge
 
-## deliveries テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| address_region_id  | integer    | null: false                    |
-| address_city       | string     | null: false                    |
-| address_street     | string     | null: false                    |
-| address_building   | string     |                                |
-| postcode           | string     | null: false                    |
-| phone_number       | string     | null: false                    |
-| order              | references | null: false, foreign_key: true |
+## blogs テーブル　（ブログ管理機能）
+|Column|Type|Options|
+|------|----|-------|
 
 ### Association
-- belong_to :order
+- belong_to :user
 
